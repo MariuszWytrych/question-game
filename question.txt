@@ -1,0 +1,5 @@
+1;Czy w klasie Object znajduje się metoda toString()?;2;1;; Zła odpowiedź. Spróbuj jeszcze raz.
+2;Czy w Javie istnieje wielodziedziczenie (klas)?;2;3; Niedobrze. Spróbuj jeszcze raz.;Dobrze
+3;Czy BigDecimal dodaje się za pomocą operatora "+" ?;3;4; Uuu. Spróbuj jeszcze raz.; Bardzo dobrze 
+4;Czy ArrayList to to samo, co LinkedList?;4;3; Niestety błędna odpowidź. Spróbuj jeszcze raz.; Bardzo dobrze
+5;Czy int ma większy zakres niż long?;5;6; Niedobrze. Spróbuj jeszcze raz; Gratulacje!
