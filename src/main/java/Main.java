@@ -59,13 +59,22 @@ public class Main {
                         if (idQuestion == idQuestionForT) {
                             System.out.println(columnForQuestion[1]);
                             answer = scanner.nextLine().toUpperCase();
+                            while (answer.equalsIgnoreCase("T")){
+                                System.out.println(columnForQuestion[1]);
+                                answer = scanner.nextLine().toUpperCase();
+                            }
+
                         }
                         break;
                     case "N":
                         System.out.println(columnForQuestion[5]);
                         if (idQuestion == idQuestionForN) {
-                            System.out.println(columnForQuestion[1]);
-                            answer = scanner.nextLine().toUpperCase();
+                                System.out.println(columnForQuestion[1]);
+                                answer = scanner.nextLine().toUpperCase();
+                                while (answer.equalsIgnoreCase("N")){
+                                    System.out.println(columnForQuestion[1]);
+                                    answer = scanner.nextLine().toUpperCase();
+                                }
                         }
                         break;
                     default:
