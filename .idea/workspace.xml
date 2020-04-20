@@ -99,12 +99,38 @@
       <option name="project" value="LOCAL" />
       <updated>1587400482650</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="First Commit. Read from file with case.">
+      <created>1587400712785</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1587400712785</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Second Commit. Change to passed.">
+      <created>1587400933606</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1587400933606</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Commit. Read from file with case." />
-    <option name="LAST_COMMIT_MESSAGE" value="First Commit. Read from file with case." />
+    <MESSAGE value="Second Commit. Change to passed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Second Commit. Change to passed." />
   </component>
   <component name="WindowStateProjectService">
     <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1587391577832">
@@ -119,14 +145,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="119" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1587390565107" />
-    <state x="361" y="10" key="CommitChangelistDialog2" timestamp="1587400500069">
+    <state x="361" y="10" key="CommitChangelistDialog2" timestamp="1587400930677">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587400500069" />
-    <state x="549" y="155" key="FileChooserDialogImpl" timestamp="1587400655913">
+    <state x="361" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587400930677" />
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1587400895886">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="155" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587400655913" />
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1587400895886" />
+    <state x="549" y="155" key="FileChooserDialogImpl" timestamp="1587401008165">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="155" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587401008165" />
     <state width="1492" height="123" key="GridCell.Tab.0.bottom" timestamp="1587400218134">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -143,10 +173,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1492" height="123" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587400218133" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1587400577206">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1587401285919">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1587400577206" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1587401285919" />
     <state x="419" y="103" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1586890004301">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
