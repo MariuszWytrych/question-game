@@ -70,6 +70,7 @@ public class Main {
                         break;
                     default:
                         System.out.println("no match");
+
                 }
             }
             br.close();
@@ -77,7 +78,7 @@ public class Main {
             System.err.println("Wystapil blad przy wczytywaniu danych");
             e.printStackTrace();
         }
-        System.out.println("Koniec gry!");
+        System.out.println("Passed");
 
 
 //        String answer;
