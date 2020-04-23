@@ -41,19 +41,49 @@ public class Main {
         System.out.println("WItaj w grze słownej. Za chwilę otrzymasz 5 pytań, na każde z nich idziel odowiedzi T lub N.\n" +
                 "Gdzie T oznacza Tak, a N oznacza Nie");
         System.out.println("Zaczynamy!");
+        int menu;
+        do {
+            System.out.println("Do wyboru masz dwa sposby gry. Wybeirz jeden z nich. \n 1. Odczyt odpowiedzi z pliku. " +
+                    "\n 2. Odczyt odpowiedzi z konsoli.\n 3. Wyjście.");
+            Scanner scanner2 = new Scanner(System.in);
+            menu = scanner2.nextInt();
+            switch (menu){
+                case 1:
+                    gameOnFile();
+                    break;
+                case 2:
+                    gameOnConsole();
+                    break;
+                case 3:
+                    System.out.println("Wyjście");
+                    break;
+                default:{
+                    System.out.println("Nie ma takiej opcji. Wybierz ponownie");
+                }
+            }
+        }while (menu != 3);
 
-        System.out.println("Wybierz tryb odpowiedzi\n 1 - tryb cichy\n 2 - tryb głośny");
+    }
 
-        int optionMode;
-        Scanner scanner = new Scanner(System.in);
-        optionMode = scanner.nextInt();
-        typeMode(optionMode);
-
+    private static void gameOnFile() throws FileNotFoundException {
 
         Scanner scannerFileQuestion = new Scanner(new File("question.txt"));
         BufferedReader bRAnswer = new BufferedReader((new FileReader("answers.txt")));
         String lineFromFileQuestion;
         String lineFromFileAnswer;
+        System.out.println("Jeśli chcesz zagrać w trybie cichym wcinij 1, jeśli nie wciśnij inny klawisz i potwierdź " +
+                "enterem");
+        boolean silentOn = false;
+        int option;
+        Scanner scanner = new Scanner(System.in);
+        option = scanner.nextInt();
+        switch (option) {
+            case 1:
+                silentOn = true;
+                break;
+            default: {
+            }
+        }
 
         try {
             while ((lineFromFileAnswer = bRAnswer.readLine()) != null) {
@@ -62,11 +92,10 @@ public class Main {
                     lineFromFileQuestion = scannerFileQuestion.nextLine();
                     String[] columnForQuestion = lineFromFileQuestion.split(";");
                     String question = columnForQuestion[1];
-                    if (typeMode(optionMode) == false) {
+                    if (!silentOn) {
                         System.out.println(question);
                         System.out.println(answerFromFile[i]);
                     }
-
                 }
                 if (scannerFileQuestion.hasNext()) {
                     System.out.println("Failed");
@@ -81,32 +110,10 @@ public class Main {
             System.err.println("Wystąpił błąd wczytywania pliku.");
             fail.printStackTrace();
         }
-
-
-//        gameOnConsole(scanner);
-
-
-//        String answer;
-//        int scores = 0;
-//
-//        for (Questions newQuestion : questionsList) {
-//            System.out.println(newQuestion.question);
-//            answer = scanner.nextLine();
-//            while (!answer.equalsIgnoreCase(newQuestion.rightAnswer)) {
-//                System.out.println(newQuestion.badInfo);
-//                scores--;
-//                answer = scanner.nextLine();
-//            }
-//            scores++;
-//            System.out.println(newQuestion.goodInfo);
-//
-//        }
-//        System.out.println("Passed! Twój wynik to: " + scores + " pkt.");
-//
-//
     }
 
-    private static void gameOnConsole(Scanner scanner) throws FileNotFoundException {
+    private static void gameOnConsole() throws FileNotFoundException {
+        Scanner scanner1 = new Scanner(System.in);
         String answer;
         BufferedReader br = new BufferedReader(new FileReader("question.txt"));
         String line;
@@ -117,16 +124,16 @@ public class Main {
                 int idQuestion = Integer.parseInt(columnForQuestion[0]);
                 int idQuestionForT = Integer.parseInt(columnForQuestion[2]);
                 int idQuestionForN = Integer.parseInt(columnForQuestion[3]);
-                answer = scanner.nextLine().toUpperCase();
+                answer = scanner1.nextLine().toUpperCase();
                 switch (answer) {
                     case "T":
                         System.out.println(columnForQuestion[4]);
                         if (idQuestion == idQuestionForT) {
                             System.out.println(columnForQuestion[1]);
-                            answer = scanner.nextLine().toUpperCase();
+                            answer = scanner1.nextLine().toUpperCase();
                             while (answer.equalsIgnoreCase("T")) {
                                 System.out.println(columnForQuestion[1]);
-                                answer = scanner.nextLine().toUpperCase();
+                                answer = scanner1.nextLine().toUpperCase();
                             }
 
                         }
@@ -135,10 +142,10 @@ public class Main {
                         System.out.println(columnForQuestion[5]);
                         if (idQuestion == idQuestionForN) {
                             System.out.println(columnForQuestion[1]);
-                            answer = scanner.nextLine().toUpperCase();
+                            answer = scanner1.nextLine().toUpperCase();
                             while (answer.equalsIgnoreCase("N")) {
                                 System.out.println(columnForQuestion[1]);
-                                answer = scanner.nextLine().toUpperCase();
+                                answer = scanner1.nextLine().toUpperCase();
                             }
                         }
                         break;
@@ -153,14 +160,6 @@ public class Main {
             e.printStackTrace();
         }
         System.out.println("Koniec gry!");
-    }
-
-    public static boolean typeMode(int optionMode) {
-        if (optionMode == 1) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
 
