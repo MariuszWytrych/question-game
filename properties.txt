@@ -1,1 +1,2 @@
-silentMode;false
+gameOnFile;1;gameOnConsole;2;silentMode;1
+

@@ -41,42 +41,53 @@ public class Main {
         System.out.println("WItaj w grze słownej. Za chwilę otrzymasz 5 pytań, na każde z nich idziel odowiedzi T lub N.\n" +
                 "Gdzie T oznacza Tak, a N oznacza Nie");
         System.out.println("Zaczynamy!");
-        int menu;
-        do {
-            System.out.println("Do wyboru masz dwa sposby gry. Wybeirz jeden z nich. \n 1. Odczyt odpowiedzi z pliku. " +
-                    "\n 2. Odczyt odpowiedzi z konsoli.\n 3. Wyjście.");
-            Scanner scanner2 = new Scanner(System.in);
-            menu = scanner2.nextInt();
-            switch (menu){
-                case 1:
-                    gameOnFile();
-                    break;
-                case 2:
-                    gameOnConsole();
-                    break;
-                case 3:
-                    System.out.println("Wyjście");
-                    break;
-                default:{
-                    System.out.println("Nie ma takiej opcji. Wybierz ponownie");
-                }
-            }
-        }while (menu != 3);
+        System.out.println("Do wyboru masz dwa sposby gry. Wybeirz jeden z nich. \n 1. Odczyt odpowiedzi z pliku. " +
+                "\n 2. Odczyt odpowiedzi z konsoli.");
 
+
+        BufferedReader brProperties = new BufferedReader(new FileReader("properties.txt"));
+        int menu = 0;
+        String lineFromProperties;
+
+        lineFromProperties = brProperties.readLine();
+            String[] columnsOfProperties = lineFromProperties.split(";");
+            menu = Integer.parseInt(columnsOfProperties[1]);
+        brProperties.close();
+
+        switch (menu) {
+            case 1:
+                gameOnFile();
+                break;
+            case 2:
+                gameOnConsole();
+                break;
+            default: {
+                System.out.println("Nie ma takiej opcji. Wybierz ponownie");
+            }
+        }
     }
 
-    private static void gameOnFile() throws FileNotFoundException {
+
+    private static void gameOnFile() throws IOException {
 
         Scanner scannerFileQuestion = new Scanner(new File("question.txt"));
         BufferedReader bRAnswer = new BufferedReader((new FileReader("answers.txt")));
         String lineFromFileQuestion;
         String lineFromFileAnswer;
-        System.out.println("Jeśli chcesz zagrać w trybie cichym wcinij 1, jeśli nie wciśnij inny klawisz i potwierdź " +
-                "enterem");
+        BufferedReader brProperties = new BufferedReader(new FileReader("properties.txt"));
+        String lineFromProperties;
+        int silentOnFromFile;
+
+        lineFromProperties = brProperties.readLine();
+        String[] columnsOfProperties = lineFromProperties.split(";");
+        silentOnFromFile = Integer.parseInt(columnsOfProperties[5]);
+
+        brProperties.close();
+//        System.out.println("Jeśli chcesz zagrać w trybie cichym wcinij 1, jeśli nie wciśnij inny klawisz i potwierdź " +
+//                "enterem");
         boolean silentOn = false;
-        int option;
-        Scanner scanner = new Scanner(System.in);
-        option = scanner.nextInt();
+        int option = 0;
+        option = silentOnFromFile;
         switch (option) {
             case 1:
                 silentOn = true;
