@@ -38,6 +38,7 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
+
         System.out.println("WItaj w grze słownej. Za chwilę otrzymasz 5 pytań, na każde z nich idziel odowiedzi T lub N.\n" +
                 "Gdzie T oznacza Tak, a N oznacza Nie");
         System.out.println("Zaczynamy!");
@@ -50,8 +51,8 @@ public class Main {
         String lineFromProperties;
 
         lineFromProperties = brProperties.readLine();
-            String[] columnsOfProperties = lineFromProperties.split(";");
-            menu = Integer.parseInt(columnsOfProperties[1]);
+        String[] columnsOfProperties = lineFromProperties.split(";");
+        menu = Integer.parseInt(columnsOfProperties[3]);
         brProperties.close();
 
         switch (menu) {
@@ -62,7 +63,7 @@ public class Main {
                 gameOnConsole();
                 break;
             default: {
-                System.out.println("Nie ma takiej opcji. Wybierz ponownie");
+                System.out.println("Nie ma takiej opcji.");
             }
         }
     }
@@ -77,6 +78,7 @@ public class Main {
         BufferedReader brProperties = new BufferedReader(new FileReader("properties.txt"));
         String lineFromProperties;
         int silentOnFromFile;
+        int result = 0;
 
         lineFromProperties = brProperties.readLine();
         String[] columnsOfProperties = lineFromProperties.split(";");
@@ -86,8 +88,8 @@ public class Main {
 //        System.out.println("Jeśli chcesz zagrać w trybie cichym wcinij 1, jeśli nie wciśnij inny klawisz i potwierdź " +
 //                "enterem");
         boolean silentOn = false;
-        int option = 0;
-        option = silentOnFromFile;
+        int option;
+        option = 2;
         switch (option) {
             case 1:
                 silentOn = true;
@@ -105,12 +107,13 @@ public class Main {
                     String question = columnForQuestion[1];
                     if (!silentOn) {
                         System.out.println(question);
-                        System.out.println(answerFromFile[i]);
+                        System.out.println(answerFromFile[i].toUpperCase());
                     }
                 }
                 if (scannerFileQuestion.hasNext()) {
                     System.out.println("Failed");
                 } else {
+                    System.out.println(result);
                     System.out.println("Passed");
                 }
             }
@@ -126,52 +129,62 @@ public class Main {
     private static void gameOnConsole() throws FileNotFoundException {
         Scanner scanner1 = new Scanner(System.in);
         String answer;
-        BufferedReader br = new BufferedReader(new FileReader("question.txt"));
+        BufferedReader brQuestion = new BufferedReader(new FileReader("question.txt"));
         String line;
+        int result = 0;
         try {
-            while ((line = br.readLine()) != null) {
+            while ((line = brQuestion.readLine()) != null) {
                 String[] columnForQuestion = line.split(";");
                 System.out.println(columnForQuestion[1]);
                 int idQuestion = Integer.parseInt(columnForQuestion[0]);
                 int idQuestionForT = Integer.parseInt(columnForQuestion[2]);
                 int idQuestionForN = Integer.parseInt(columnForQuestion[3]);
+                int pointForT = Integer.parseInt(columnForQuestion[6]);
+                int pointForN = Integer.parseInt(columnForQuestion[7]);
                 answer = scanner1.nextLine().toUpperCase();
                 switch (answer) {
-                    case "T":
+                    case "T": {
                         System.out.println(columnForQuestion[4]);
-                        if (idQuestion == idQuestionForT) {
+                        result = result + pointForT;
+                        while (idQuestion == idQuestionForT & answer.equalsIgnoreCase("T")) {
                             System.out.println(columnForQuestion[1]);
                             answer = scanner1.nextLine().toUpperCase();
-                            while (answer.equalsIgnoreCase("T")) {
-                                System.out.println(columnForQuestion[1]);
-                                answer = scanner1.nextLine().toUpperCase();
+                            if (answer.equalsIgnoreCase("T")) {
+                                result = result + pointForT;
+                            } else if (answer.equalsIgnoreCase("N")) {
+                                result = result + pointForN;
                             }
-
                         }
-                        break;
-                    case "N":
+                    }
+                    break;
+                    case "N": {
                         System.out.println(columnForQuestion[5]);
-                        if (idQuestion == idQuestionForN) {
+                        result = result + pointForN;
+                        while (idQuestion == idQuestionForN & answer.equalsIgnoreCase("N")) {
                             System.out.println(columnForQuestion[1]);
                             answer = scanner1.nextLine().toUpperCase();
-                            while (answer.equalsIgnoreCase("N")) {
-                                System.out.println(columnForQuestion[1]);
-                                answer = scanner1.nextLine().toUpperCase();
+                            if (answer.equalsIgnoreCase("N")) {
+                                result = result + pointForN;
+                            } else if (answer.equalsIgnoreCase("T")) {
+                                result = result + pointForT;
                             }
                         }
-                        break;
+                    }
+                    break;
+//                    }
                     default:
                         System.out.println("no match");
-
                 }
             }
-            br.close();
+            brQuestion.close();
         } catch (Exception e) {
             System.err.println("Wystapil blad przy wczytywaniu danych");
             e.printStackTrace();
         }
-        System.out.println("Koniec gry!");
+        System.out.println(result);
+        System.out.println("Passed");
     }
-
-
 }
+
+
+
