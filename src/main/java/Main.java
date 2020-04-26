@@ -52,7 +52,7 @@ public class Main {
 
         lineFromProperties = brProperties.readLine();
         String[] columnsOfProperties = lineFromProperties.split(";");
-        menu = Integer.parseInt(columnsOfProperties[3]);
+        menu = Integer.parseInt(columnsOfProperties[1]);
         brProperties.close();
 
         switch (menu) {
@@ -89,7 +89,7 @@ public class Main {
 //                "enterem");
         boolean silentOn = false;
         int option;
-        option = 2;
+        option = silentOnFromFile;
         switch (option) {
             case 1:
                 silentOn = true;
@@ -104,10 +104,19 @@ public class Main {
                 for (int i = 0; i < answerFromFile.length; i++) {
                     lineFromFileQuestion = scannerFileQuestion.nextLine();
                     String[] columnForQuestion = lineFromFileQuestion.split(";");
+                    int pointForT = Integer.parseInt(columnForQuestion[6]);
+                    int pointForN = Integer.parseInt(columnForQuestion[7]);
                     String question = columnForQuestion[1];
-                    if (!silentOn) {
+                    if (!silentOn && answerFromFile[i].equalsIgnoreCase("T")) {
                         System.out.println(question);
                         System.out.println(answerFromFile[i].toUpperCase());
+                        result = result + pointForT;
+                    } else if (!silentOn && answerFromFile[i].equalsIgnoreCase("N")){
+                        System.out.println(question);
+                        System.out.println(answerFromFile[i].toUpperCase());
+                        result = result + pointForN;
+                    }else {
+                        result = result + pointForN;
                     }
                 }
                 if (scannerFileQuestion.hasNext()) {
