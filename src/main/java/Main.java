@@ -54,6 +54,7 @@ public class Main {
         String[] columnsOfProperties = lineFromProperties.split(";");
         menu = Integer.parseInt(columnsOfProperties[1]);
         brProperties.close();
+        System.out.println("Wybrano: " + menu);
 
         switch (menu) {
             case 1:
@@ -67,7 +68,6 @@ public class Main {
             }
         }
     }
-
 
     private static void gameOnFile() throws IOException {
 
@@ -85,10 +85,11 @@ public class Main {
         silentOnFromFile = Integer.parseInt(columnsOfProperties[5]);
 
         brProperties.close();
-//        System.out.println("Jeśli chcesz zagrać w trybie cichym wcinij 1, jeśli nie wciśnij inny klawisz i potwierdź " +
-//                "enterem");
+        System.out.println("Jeśli chcesz zagrać w trybie cichym wcinij 1, jeśli nie wciśnij inny klawisz i potwierdź " +
+                "enterem");
         boolean silentOn = false;
         int option;
+        System.out.println(silentOnFromFile);
         option = silentOnFromFile;
         switch (option) {
             case 1:
